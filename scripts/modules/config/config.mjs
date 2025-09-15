@@ -1,7 +1,7 @@
 /*********************************************************************/
 /*                           Config Module                           */
 /*********************************************************************/
-const $AppName = "MyApp";
+const $AppName = "matchitems1";
 
 export const Config = {
    DEV_MODE: true,
