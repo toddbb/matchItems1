@@ -1,0 +1,167 @@
+:root {
+   --main-bg-color: #f0f0f0;
+   --item-bg-color: #ffffff;
+   --item-border-color: #ccc;
+   --item-hover-bg-color: #e0e0e0;
+   --selected-bg-color: rgb(239, 251, 255);
+   --selected-border-color: rgb(114, 162, 235);
+   --match-bg-color: rgb(233, 233, 233);
+   --match-border-color-selectable: rgb(17, 73, 255);
+}
+/***************************************************************************/
+/***********             CUSTOM CLASSES                 ********************/
+/***************************************************************************/
+
+.container {
+   width: 500px;
+}
+
+/***************************************************************************/
+/****************      LEFT, MIDDLE, and RIGHT             *****************/
+/***************************************************************************/
+
+.left-item, .right-match {
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 80px;
+   border: 1px solid #ccc;
+}
+
+
+.middle-gap {
+   width: 40px;
+}
+
+
+/***************************************************************************/
+/****************         LEFT ITEMS                       *****************/
+/***************************************************************************/
+
+.left-item {
+   border-top-left-radius: 8px;
+   border-bottom-left-radius: 8px;
+   width: 200px;
+   cursor: pointer;
+}
+
+
+/*** ITEM SEMICIRCLE ***/
+.left-item::after {
+   content: "";
+   position: absolute;
+   right: -25px; /* Adjust based on your design */
+   width: 50px; /* Adjust as needed */
+   height: 50px; /* Should be equal to width for a perfect circle */
+   border: 1px solid #ccc; /* Match your div border */
+   border-radius: 50%;
+   background: white; /* Or match your background */
+   clip-path: inset(0 0 0 50%); /* Shows only the top half */
+   pointer-events: none;
+   z-index: 9999;
+}
+.left-item::before {
+    content: "";
+    position: absolute;
+    right: -2px;
+    width: 1px;
+    height: 48px;
+    /* background: red; */
+    border: 2px solid #ffffff;
+    z-index: 10000;
+}
+
+
+
+/***************************************************************************/
+/****************            RIGHT MATCHES                 *****************/
+/***************************************************************************/
+
+
+.right-match {
+   left: -1px;
+   width: 200px;
+   border-top-right-radius: 8px;
+   border-bottom-right-radius: 8px;
+   background-color: var(--match-bg-color);
+}
+
+
+/*** MATCH ITEM SEMICIRCLE ***/
+/* circle */
+.right-match::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+/* square to block the left half of the circle */
+.right-match::after {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 50px;
+  background: rgb(255, 255, 255);
+   
+}
+
+
+
+
+
+/***************************************************************************/
+/***********       CLASSES CASCADED LAST          *************************/
+/***************************************************************************/
+
+.selected, .selected::after {
+   border-color: var(--selected-border-color);
+   cursor: pointer;
+}
+.selected, .selected::after {
+   background-color: var(--selected-bg-color);
+}
+
+.selected::before {
+   border-color: var(--selected-bg-color);
+}
+
+.selectable {
+   cursor: pointer;
+   background-color: var(--match-bg-color);
+   border-color: var(--match-border-color-selectable);
+}
+.selectable::before {
+   
+   border-color: var(--match-border-color-selectable);
+}
+
+.nodisplay {
+   display: none !important;
+}
+
+/***************************************************************************/
+/***********         RESPONSIVE MEDIA QUERIES     *************************/
+/***************************************************************************/
+
+@media only screen and (max-width: 992px) {
+}
+
+@media only screen and (max-width: 767px) {
+}
+
+@media only screen and (max-width: 575px) {
+}
+
+@media only screen and (max-width: 375px) {
+}
