@@ -7,6 +7,8 @@
    --selected-border-color: rgb(114, 162, 235);
    --match-bg-color: rgb(233, 233, 233);
    --match-border-color-selectable: rgb(17, 73, 255);
+   --neon: #39ff14; /* limegreen style - change to #00e5ff, #ff2d95, etc. */
+   --box-shadow-color-selectable: rgba(67, 100, 234, 0.2);
 }
 /***************************************************************************/
 /***********             CUSTOM CLASSES                 ********************/
@@ -139,11 +141,17 @@
 .selectable {
    cursor: pointer;
    background-color: var(--match-bg-color);
-   border-color: var(--match-border-color-selectable);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  border-color: transparent;
+  box-shadow: 
+    0 -2px 4px var(--box-shadow-color-selectable),  /* top */
+    2px 0 4px var(--box-shadow-color-selectable),   /* right */
+    0 2px 4px var(--box-shadow-color-selectable);   /* bottom */
 }
+
 .selectable::before {
    
-   border-color: var(--match-border-color-selectable);
+   /* border-color: var(--match-border-color-selectable); */
 }
 
 .nodisplay {
